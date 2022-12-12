@@ -1,0 +1,11 @@
+
+*.vsidx
+*.lock
+AlienPlataform/.vs/AlienPlataform/v17/.suo
+AlienPlataform/.vsconfig
+*.meta
+AlienPlataform/Library/
+AlienPlataform/Logs/
+AlienPlataform/obj/Debug/
+AlienPlataform/Packages/
+AlienPlataform/Temp/
