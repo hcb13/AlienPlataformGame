@@ -10,6 +10,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         GetComponent<PlayerMove>().OnSetIdle += UpdateAnimatorIdle;
         GetComponent<PlayerJump>().OnSetIsGrounded += UpdateAnimatorIsGrounded;
+        GetComponent<PlayerClimb>().OnSetIsClimbing += UpdateAnimatorIsClimbing;
 
         _animator = GetComponent<Animator>();
     }
@@ -25,4 +26,8 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetBool("IsGrounded", isGrounded);
     }
 
+    private void UpdateAnimatorIsClimbing(bool isClimbing)
+    {
+        _animator.SetBool("IsClimbing", isClimbing);
+    }
 }
