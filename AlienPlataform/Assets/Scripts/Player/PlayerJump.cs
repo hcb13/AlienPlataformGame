@@ -9,9 +9,12 @@ public class PlayerJump : MonoBehaviour
     private float jumpForce = 2.5f;
 
     private bool _isGrounded;
+
     private Rigidbody2D _rigibody;
 
     public Action<bool> OnSetIsGrounded = delegate { };
+    public Action OnIsJumpingTrue = delegate { };
+    public Action OnIsJumpingFalse = delegate { };
 
     private void Awake()
     {
@@ -29,10 +32,16 @@ public class PlayerJump : MonoBehaviour
     private void Jump(bool buttonDown)
     {
         if(buttonDown && _isGrounded)
-        {
+        {            
             _rigibody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }        
+        }else if(buttonDown && !_isGrounded)
+        {
+            OnIsJumpingTrue?.Invoke();
+            _rigibody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        } 
     }
+
+
 
     private void LateUpdate()
     {

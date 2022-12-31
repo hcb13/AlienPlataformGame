@@ -26,6 +26,8 @@ public class PlayerClimb : MonoBehaviour
         GetComponent<PlayerLadderCheck>().OnEnterLadder += EnterLadder;
         GetComponent<PlayerLadderCheck>().OnExitLadder += ExitLadder;
 
+        GetComponent<PlayerJump>().OnIsJumpingTrue += ExitLadder;
+
         _rigidbody = GetComponent<Rigidbody2D>();
         _gravityScale = _rigidbody.gravityScale;
     }
@@ -61,7 +63,7 @@ public class PlayerClimb : MonoBehaviour
         }
         else
         {
-            _rigidbody.gravityScale = _gravityScale;
+            _rigidbody.gravityScale = 1;
         }
     }
 
